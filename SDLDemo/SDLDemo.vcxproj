@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Justin\Documents\Assets\SDL2\SDL2_image-2.0.5\include;C:\Users\Justin\Documents\Assets\SDL2\SDL2-2.0.14\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Justin\Documents\Assets\SDL2\SDL2_image-2.0.5\lib\x86;C:\Users\Justin\Documents\Assets\SDL2\SDL2-2.0.14\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Justin\Documents\Assets\SDL2_ttf-2.0.15\include;C:\Users\Justin\Documents\Assets\SDL2\SDL2_image-2.0.5\include;C:\Users\Justin\Documents\Assets\SDL2\SDL2-2.0.14\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Justin\Documents\Assets\SDL2_ttf-2.0.15\lib\x86;C:\Users\Justin\Documents\Assets\SDL2\SDL2_image-2.0.5\lib\x86;C:\Users\Justin\Documents\Assets\SDL2\SDL2-2.0.14\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -90,12 +90,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Justin\Documents\Assets\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Justin\Documents\Assets\SDL2\SDL2_image-2.0.5\include;C:\Users\Justin\Documents\Assets\SDL2\SDL2-2.0.14\include;C:\Users\Justin\Documents\Assets\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Justin\Documents\Assets\SDL2_ttf-2.0.15\lib\x86;C:\Users\Justin\Documents\Assets\SDL2\SDL2_image-2.0.5\lib\x86;C:\Users\Justin\Documents\Assets\SDL2\SDL2-2.0.14\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Justin\Documents\Assets\SDL2\SDL2-2.0.14\lib\x86;C:\Users\Justin\Documents\Assets\SDL2_ttf-2.0.15\lib\x86;C:\Users\Justin\Documents\Assets\SDL2\SDL2_image-2.0.5\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

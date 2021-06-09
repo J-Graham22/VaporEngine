@@ -22,15 +22,16 @@ SDL_Rect Game::camera = { 0,0, Game::windowWidth, Game::windowHeight };
 
 AssetManager* Game::assets = new AssetManager(&manager);
 
-//std::vector<Collider*> Game::colliders;
-
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
+
 auto& ground(manager.addEntity());
+auto& leftWall(manager.addEntity());
+auto& rightWall(manager.addEntity());
+auto& ceiling(manager.addEntity());
+
 auto& label(manager.addEntity());
-
-
 
 Game::Game() {
 	
@@ -73,7 +74,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	assets->AddTexture("player","SimpleHero.png");
 	assets->AddTexture("obstacle","BasicTile.png");
-	assets->AddTexture("projectile", "enemy1.png");
+	assets->AddTexture("projectile", "projectile.png");
 
 	assets->AddFont("04b", "04B_19_.TTF", 16);
 
@@ -88,22 +89,41 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 //	map->LoadMap("insert whatever the path to the imported map would be", { number of tiles in x direction }, { number of tiles in y direction });
 
 	player.addComponent<TransformComponent>(2);
-	player.addComponent<SpriteComponent>("SimpleHero.png", true);
+	player.addComponent<SpriteComponent>("player", true);
 	player.addComponent<KeyboardController>();
 	player.addComponent<Gravity>();
-	player.getComponent<Gravity>().setFallSpeed(0.0f);
+//	player.getComponent<Gravity>().setFallSpeed(0.01f);
 	player.addComponent<Collider>("player");
 	player.addGroup(groupPlayer);
 
 	ground.addComponent<TransformComponent>(0.0f, 600.0f, 40, 800, 1);
-	ground.addComponent<SpriteComponent>("BasicTile.png", false);
+	ground.addComponent<SpriteComponent>("obstacle", false);
 	ground.addComponent<Collider>("floor");
 	ground.addGroup(groupMap);
+	ground.addGroup(groupColliders);
+
+	leftWall.addComponent<TransformComponent>(0.0f, 0.0f, 640, 40, 1);
+	leftWall.addComponent<SpriteComponent>("obstacle", false);
+	leftWall.addComponent<Collider>("floor");
+	leftWall.addGroup(groupMap);
+	leftWall.addGroup(groupColliders);
+
+	rightWall.addComponent<TransformComponent>(760.0f, 0.0f, 640, 40, 1);
+	rightWall.addComponent<SpriteComponent>("obstacle", false);
+	rightWall.addComponent<Collider>("floor");
+	rightWall.addGroup(groupMap);
+	rightWall.addGroup(groupColliders);
+
+	ceiling.addComponent<TransformComponent>(0.0f, 0.0f, 40, 800, 1);
+	ceiling.addComponent<SpriteComponent>("obstacle", false);
+	ceiling.addComponent<Collider>("floor");
+	ceiling.addGroup(groupMap);
+	ceiling.addGroup(groupColliders);
 
 	SDL_Color white = { 255, 255, 255, 255 };
 	label.addComponent<UILabel>(10, 10, "testing testing 1 2 3", "04b", white);
 
-	assets->CreateProjectile(Vector2D(600, 600), Vector2D(2, 0), 200, 2, "projectile");
+	assets->CreateProjectile(Vector2D(60, 60), Vector2D(1, 0), 200, 2, "projectile", "projectile");
 }
 
 auto& tiles(manager.getGroup(Game::groupMap));
@@ -137,19 +157,40 @@ void Game::update() {
 	manager.update();
 
 	for (auto& c : colliders) {
-		SDL_Rect cCollider = c->getComponent<Collider>().collider;
+		
+			SDL_Rect cCollider = c->getComponent<Collider>().collider;
 
-		if (CollisionMath::AABB(cCollider, playerCollider)) {
-			player.getComponent<TransformComponent>().position = playerPos;
-		}
+			if (CollisionMath::AABB(cCollider, playerCollider)) {
+				player.getComponent<TransformComponent>().position = playerPos;
+				//player.getComponent<TransformComponent>().velocity.y = 0;
+			}
+		
+	
 	}
 
 	for (auto& pr : projectiles) {
-		if (CollisionMath::AABB(player.getComponent<Collider>().collider, pr->getComponent<Collider>().collider)) {
+		if (CollisionMath::AABB(player.getComponent<Collider>().collider, pr->getComponent<Collider>().collider) && pr->getComponent<Collider>().tag == "projectile" && projectiles.size() <= 3) {
 			//The projectile has successfully hit
-			std::cout << "Hit player" << std::endl;
+			std::cout << "Hit player with tag: "<< pr->getComponent<Collider>().tag << std::endl;
 			pr->destroy();
 		}
+	}
+
+	if (projectiles.empty()) {
+		assets->CreateProjectile(Vector2D(60, 60), Vector2D(1, 0), 200, 2, "projectile", "projectile");
+	}
+
+	if (playerPos.y < 200) {
+		SDL_Color green = { 100, 255, 100, 255 };
+		label.getComponent<UILabel>().SetTextColor(green);
+	}
+	else if (playerPos.y < 400) {
+		SDL_Color blue = { 100, 100, 200, 255 };
+		label.getComponent<UILabel>().SetTextColor(blue);
+	}
+	else {
+		SDL_Color red = { 255, 100,100,255 };
+		label.getComponent<UILabel>().SetTextColor(red);
 	}
 
 //	camera.x = player.getComponent<TransformComponent>().position.x - 400;
@@ -171,7 +212,7 @@ void Game::update() {
 	//	camera.y = camera.h;
 	//}
 
-	camera.y--;
+//	camera.y--;
 
 	if (camera.y + Game::windowHeight < player.getComponent<TransformComponent>().position.y) {
 		std::cout << "Player has died" << std::endl;
@@ -269,6 +310,17 @@ void Game::addObstacle() {
 	obstacleRight.addComponent<Collider>("obstacle-right");
 	obstacleRight.addGroup(groupMap);
 
+}
+
+void Game::shoot() {
+	int direction;
+	if (player.getComponent<SpriteComponent>().spriteFlip == SDL_FLIP_NONE) {
+		direction = 1;
+	}
+	else {
+		direction = -1;
+	}
+	assets->CreateProjectile(player.getComponent<TransformComponent>().position, Vector2D(direction, 0), 200, 2, "projectile", "player projectile");
 }
 
 

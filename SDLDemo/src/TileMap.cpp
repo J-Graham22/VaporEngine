@@ -40,8 +40,8 @@ void TileMap::LoadMap(std::string path, int sizeX, int sizeY) {
 
 	for (int y = 0; y < sizeY; y++) {
 		for (int x = 0; x < sizeX; x++) {
-			mapFile.get(c);
-			if (c == '1') {
+			mapFile.get(tile);
+			if (tile == '1') {
 				auto& tcol(manager.addEntity());
 				tcol.addComponent<Collider>("terrain", x * scaledSize, y * scaledSize, scaledSize);
 				tcol.addGroup(Game::groupColliders);

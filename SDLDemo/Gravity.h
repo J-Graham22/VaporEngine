@@ -25,7 +25,10 @@ public:
 	}
 
 	void update() override {
-		transform->velocity.y += fallSpeed;
+		if (transform->velocity.y <= 1.8f) {
+			transform->velocity.y += fallSpeed;
+		}
+		
 	}
 };
 

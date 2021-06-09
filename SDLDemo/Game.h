@@ -25,6 +25,7 @@ public:
 	void render();
 	void clean();
 	void addObstacle();
+	static void shoot();
 
 
 	static SDL_Renderer* renderer;

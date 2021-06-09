@@ -1,23 +1,38 @@
-﻿  CollisionMath.cpp
-C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(23,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+﻿  AssetManager.cpp
 C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(24,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(36,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(25,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(37,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(38,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  CollisionMath.cpp
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(24,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(25,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(37,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(38,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   ECS.cpp
   Game.cpp
-C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(23,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(24,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(36,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(25,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(37,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(38,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\src\Game.cpp(323,88): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\ECS.h(91,33): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
           with
           [
               _Ty=int
           ]
-C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\src\Game.cpp(228): message : see reference to function template instantiation 'T &Entity::addComponent<TransformComponent,int,int,int,int&,int>(int &&,int &&,int &&,int &,int &&)' being compiled
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\src\Game.cpp(302): message : see reference to function template instantiation 'T &Entity::addComponent<TransformComponent,int,int,int,int&,int>(int &&,int &&,int &&,int &,int &&)' being compiled
           with
           [
               T=TransformComponent
           ]
+  GameObject.cpp
+  main.cpp
+  TextureLoader.cpp
+  TileMap.cpp
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(24,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(25,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(37,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\SDLDemo\TileComponent.h(38,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Vector2D.cpp
   Generating Code...
   SDLDemo.vcxproj -> C:\Users\Justin\Documents\Programming Projects\C++\SDLDemo\Debug\SDLDemo.exe

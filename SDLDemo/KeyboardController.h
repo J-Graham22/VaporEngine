@@ -42,6 +42,8 @@ public:
 				break;
 			case SDLK_ESCAPE:
 				Game::isRunning = false;
+			case SDLK_SPACE:
+				Game::shoot();
 			default:
 				break;
 			}
@@ -53,7 +55,6 @@ public:
 			case SDLK_w:
 				transform->velocity.y = 0;
 				sprite->play("Idle");
-				break;
 			case SDLK_a:
 				transform->velocity.x = 0;
 				sprite->play("Idle");
